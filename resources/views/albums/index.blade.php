@@ -25,7 +25,7 @@
     <h4 class="serif mb-4">Featured Albums</h4>
     <div class="row g-4 mb-5"><div class="col-sm-6 col-md-4 col-lg-3">
   <div class="card card-music h-100">
-    <div class="cover"><img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600" alt="Songs of the Sanctuary"><span class="play"><i class="bi bi-play-fill"></i></span></div>
+    <div class="cover"><img src="{{ Storage::url($albums->photo) }}" alt="Songs of the Sanctuary"><span class="play"><i class="bi bi-play-fill"></i></span></div>
     <div class="card-body">
       <h6 class="mb-1 serif">Songs of the Sanctuary</h6>
       <small class="text-muted">Bethany Hayes · 2025</small>

@@ -21,7 +21,8 @@ Route::get('/', [PageController::class, 'index'])->name('index');
 
 // Artists
 Route::get('/artists', [ArtistController::class, 'artists'])->name('artists.index');
-Route::get('/artists/details', [ArtistController::class, 'artistsDetails'])->name('artists.details');
+// Route::get('/artists/details', [ArtistController::class, 'artistsDetails'])->name('artists.details');
+Route::get('/artists{artist}', [ArtistController::class, 'artistsDetails'])->name('artists.details');
 // Albums
 Route::get('/albums', [AlbumController::class, 'albums'])->name('albums.index');
 Route::get('/albums/details', [AlbumController::class, 'albumsDetails'])->name('albums.details');

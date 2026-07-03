@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('role_id')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('photo')->nullable();
         });
     }
 

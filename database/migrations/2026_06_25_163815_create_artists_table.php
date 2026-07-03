@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('genre_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -21,7 +22,6 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->string('artist_photo')->nullable();
             $table->boolean('is_featured')->default(false)->nullable();
-            $table->json('social_links')->nullable();
             $table->string('artist_label')->nullable();
             $table->string('artist_location')->nullable();
             $table->string('artist_listeners')->nullable();

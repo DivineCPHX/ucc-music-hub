@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('about_contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('about_id')->constrained('about')->cascadeOnDelete();
+            $table->foreignId('about_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->longText('body')->nullable();
             $table->timestamps();
