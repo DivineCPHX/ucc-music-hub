@@ -19,7 +19,7 @@
   <div class="container">
     <article class="row g-4 mb-5 align-items-center">
       <div class="col-md-6"><img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1000" class="img-fluid rounded-4" alt="Featured"></div>
-      <div class="col-md-6"><span class="tag">Featured</span><h2 class="serif mt-2">Why Worship Music Heals the Soul</h2><p class="text-muted">A deep dive into the neuroscience and theology behind why singing praise transforms lives.</p><a href="single.blade.php" class="btn btn-ucc">Read Article</a></div>
+      <div class="col-md-6"><span class="tag">Featured</span><h2 class="serif mt-2">Why Worship Music Heals the Soul</h2><p class="text-muted">A deep dive into the neuroscience and theology behind why singing praise transforms lives.</p><a href="/blog/single" class="btn btn-ucc">Read Article</a></div>
     </article>
     <div class="row g-5">
       <div class="col-lg-8">

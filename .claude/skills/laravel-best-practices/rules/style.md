@@ -16,7 +16,7 @@
 | Variable | camelCase | `$articlesWithAuthor` | `$articles_with_author` |
 | Collection | descriptive, plural | `$activeUsers` | `$data` |
 | Object | descriptive, singular | `$activeUser` | `$users` |
-| View | kebab-case | `show-filtered.html` | `showFiltered.html` |
+| View | kebab-case | `show-filtered.blade.php` | `showFiltered.blade.php` |
 | Config | snake_case | `google_calendar.php` | `googleCalendar.php` |
 | Enum | singular | `UserType` | `UserTypes` |
 

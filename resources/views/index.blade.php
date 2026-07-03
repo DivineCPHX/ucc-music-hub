@@ -30,9 +30,9 @@
               <img src="https://res.cloudinary.com/deyewrsnk/image/upload/f_auto,q_auto/nna_xljjtx"
                 alt="Featured worship artist" class="hero-portrait">
               <span
-                class="hero-feature-badge position-absolute bottom-0 start-50 translate-middle-x bg-ucc-gold text-dark px-3 py-2 rounded-pill fw-semibold small"
-                style="white-space:nowrap"><i class="bi bi-mic-fill me-1"></i><span class="d-none d-lg-inline">Featured
-                  Artist of the Month</span><span class="d-lg-none">Featured</span></span>
+                class="hero-feature-badge "" position-absolute bottom-0 start-50 translate-middle-x bg-ucc-gold text-dark px-3 py-2 rounded-pill fw-semibold small"
+                style="white-space:nowrap"><i class="bi bi-mic-fill me-1"></i><span class="d-none d-lg-inline">
+                  </span><span class="d-lg-none">Dr. Ukangwa Chinemerem Clement</span></span>
             </div>
           </div>
         </div>
