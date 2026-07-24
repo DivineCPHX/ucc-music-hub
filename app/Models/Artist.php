@@ -45,8 +45,13 @@ class Artist extends Model
         return $this->belongsTo(Genre::class);
     }
 
-    public function artist_link()
+    public function artistLinks()
     {
-        return $this->belongsToMany(ArtistLink::class);
+        return $this->hasMany(ArtistLink::class,'artist_id');
+    }
+
+    public function albums()
+    {
+        return $this->hasMany(Album::class, 'artist_id');
     }
 }

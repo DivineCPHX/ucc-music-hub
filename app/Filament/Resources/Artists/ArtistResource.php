@@ -8,6 +8,7 @@ use App\Filament\Resources\Artists\Pages\ListArtists;
 use App\Filament\Resources\Artists\Pages\ViewArtist;
 use App\Filament\Resources\Artists\Schemas\ArtistForm;
 use App\Filament\Resources\Artists\Tables\ArtistsTable;
+use App\Filament\Resources\Artists\RelationManagers\ArtistLinksRelationManager;
 use App\Models\Artist;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -36,7 +37,7 @@ class ArtistResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ArtistLinksRelationManager::class,
         ];
     }
 
