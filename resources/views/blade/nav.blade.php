@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-ucc fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="/"><i class="bi bi-music-note-beamed text-ucc-gold me-2"></i>UCC Music Hub</a>
+    <a class="navbar-brand" href="/">
+      <img src="{{ asset('img/ucc-logo.png') }}" alt="UCC Music Hub">
+      <span class="brand-text">UCC Music Hub<small>Ukangwa C.C. Music Consult</small></span>
+    </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon" style="filter:invert(1)"></span></button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
@@ -70,7 +73,6 @@
         </li>
     </ul>
 </li>
-{{-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " href="#" data-bs-toggle="dropdown">Shop</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/shop/merchandise">Merchandise</a></li><li><a class="dropdown-item" href="/shop/music-sheets">Music Sheets &amp; MIDI</a></li></ul></li> --}}
 
 </li><li class="nav-item">
     <a class="nav-link {{ request()->is('gallery') ? 'active' : '' }}"
@@ -84,12 +86,6 @@
        Blog
     </a>
 </li>
-{{-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " href="#" data-bs-toggle="dropdown">More</a><ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="/about">About</a></li>
-    <li><a class="dropdown-item" href="/testimonials">Testimonials</a></li>
-    <li><a class="dropdown-item" href="/subscriptions">Subscriptions</a></li>
-    <li><a class="dropdown-item" href="/faq">FAQ</a></li>
-    <li><a class="dropdown-item" href="/contact">Contact</a></li></ul></li> --}}
 
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle {{ request()->is('more/*') ? 'active' : '' }}"

@@ -28,15 +28,16 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card card-music h-100">
                 <div class="cover">
-                    <img src="{{ Storage::url($album->photo) }}" alt="{{ $album->name }}"><span class="play"><i class="bi bi-play-fill"></i></span>
+                    <img src="{{ Storage::url($album->photo) }}" alt="{{ $album->name }}"><span class="play"><a href="{{ route('albums.details', $album) }}" style="color:inherit;text-decoration:none"><i class="bi bi-play-fill"></i></a></span>
                 </div>
                 <div class="card-body">
                 <a href="{{ route('albums.details', $album) }}" class="text-decoration-none text-reset"><h6 class="mb-1 serif">{{ $album->name }}</h6></a>
                 <small class="text-muted">{{ $album->artist->name }} · {{ $album->release_year }}</small>
+
                     <div class="d-flex gap-2 mt-2">
-                        <a href="https://music.youtube.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-danger px-2 py-1" title="YouTube Music" style="font-size:.7rem"><i class="bi bi-youtube"></i> YT Music</a>
-                        <a href="https://open.spotify.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success px-2 py-1" title="Spotify" style="font-size:.7rem"><i class="bi bi-spotify"></i> Spotify</a>
-                        <a href="https://audiomack.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-warning px-2 py-1" title="Audiomack" style="font-size:.7rem"><i class="bi bi-music-note-list"></i> Audiomack</a>
+                        @foreach ($album->albumLinks as $albumLink)
+                        <a href="{{ $albumLink->url }}" target="_blank" rel="noopener" class="{{ $albumLink->class_indicator }}" title="{{ $albumLink->name }}" style="font-size:.7rem"><i class="{{ $albumLink->icon }}"></i>{{ $albumLink->name }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -48,15 +49,15 @@
 <div class="col-sm-6 col-md-4 col-lg-3">
   <div class="card card-music h-100">
         <div class="cover">
-            <img src="{{ Storage::url($album->photo) }}" alt="{{ $album->name }}"><span class="play"><i class="bi bi-play-fill"></i></span>
+            <img src="{{ Storage::url($album->photo) }}" alt="{{ $album->name }}"><span class="play"><a href="{{ route('albums.details', $album) }}" style="color:inherit;text-decoration:none"><i class="bi bi-play-fill"></i></a></span>
         </div>
         <div class="card-body">
             <a href="{{ route('albums.details', $album) }}" class="text-decoration-none text-reset"><h6 class="mb-1 serif">{{ $album->name }}</h6></a>
             <small class="text-muted">{{ $album->artist->name }} · {{ $album->release_year }}</small>
                 <div class="d-flex gap-2 mt-2">
-                    <a href="https://music.youtube.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-danger px-2 py-1" title="YouTube Music" style="font-size:.7rem"><i class="bi bi-youtube"></i> YT Music</a>
-                    <a href="https://open.spotify.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success px-2 py-1" title="Spotify" style="font-size:.7rem"><i class="bi bi-spotify"></i> Spotify</a>
-                    <a href="https://audiomack.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-warning px-2 py-1" title="Audiomack" style="font-size:.7rem"><i class="bi bi-music-note-list"></i> Audiomack</a>
+                    @foreach ($album->albumLinks as $albumLink)
+                    <a href="{{ $albumLink->url }}" target="_blank" rel="noopener" class="{{ $albumLink->class_indicator }}" title="{{ $albumLink->name }}" style="font-size:.7rem"><i class="{{ $albumLink->icon }}"></i>{{$albumLink->name}}</a>
+                    @endforeach
                 </div>
         </div>
   </div>

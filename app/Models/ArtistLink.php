@@ -9,6 +9,7 @@ class ArtistLink extends Model
     protected $fillable = [
         'artist_id',
         'name',
+        'icon',
         'url',
     ];
 

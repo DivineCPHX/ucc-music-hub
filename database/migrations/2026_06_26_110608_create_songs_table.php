@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('song_key')->nullable();
             $table->text('description')->nullable();
             $table->longText('song_lyrics')->nullable();
-            $table->string('song_duration')->nullable();
+            $table->unsignedInteger('song_duration')->nullable();
             $table->json('social_links')->nullable();
             $table->timestamps();
         });

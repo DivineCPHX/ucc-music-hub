@@ -18,6 +18,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
 </head>
 
 <body>
@@ -30,7 +31,9 @@
   {{-- Footer --}}
   @include('blade.footer')
   <script src="{{ asset('js/foot.js') }}"></script>
-  <script src="js/main.js"></script>
+  {{-- <script src="js/main.js"></script> --}}
+  @vite('resources/js/main.js')
+  <script src="{{ asset('js/footer.js') }}"></script>
 </body>
 
 </html>

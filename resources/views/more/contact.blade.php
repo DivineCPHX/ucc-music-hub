@@ -37,7 +37,7 @@
           <p class="mb-3"><i class="bi bi-clock text-ucc-primary me-2"></i>Mon–Fri, 9am–6pm CT</p>
           <div class="fs-4"><a href="#" class="text-ucc-primary me-3"><i class="bi bi-facebook"></i></a><a href="#" class="text-ucc-primary me-3"><i class="bi bi-instagram"></i></a><a href="#" class="text-ucc-primary me-3"><i class="bi bi-youtube"></i></a><a href="#" class="text-ucc-primary"><i class="bi bi-twitter-x"></i></a></div>
         </div>
-        <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm"><iframe src="https://www.google.com/maps?q=Nashville,TN&output=embed" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="UCC Music Hub Location"></iframe></div>
+        <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm"><iframe src="https://www.google.com/maps?q=Babcock+University,+Ilishan-Remo,+Ogun+State,+Nigeria&output=embed" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="UCC Music Hub Location"></iframe></div>
       </div>
     </div>
   </div>

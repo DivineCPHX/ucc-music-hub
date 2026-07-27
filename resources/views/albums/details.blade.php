@@ -3,18 +3,30 @@
 @section('title', 'Album Details')
 
 @section('content')
-<body>
 <section class="page-header" style="margin-top:0;padding-bottom:4rem">
   <div class="container">
     <div class="row g-5">
-      <div class="col-md-4"><img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800" class="img-fluid rounded-4 shadow" alt="Album cover"></div>
+      <div class="col-md-4"><img src="{{ Storage::url($album->photo) }}" class="img-fluid rounded-4 shadow" style="width:80%;height:80%;" alt="{{ $album->name }}r"></div>
       <div class="col-md-8">
         <span class="tag">Album · 2025</span>
         <h1 class="serif mt-2">{{ $album->name }}</h1>
-        <p class="lead">by <a href="details.blade.php" class="text-ucc-gold fw-semibold text-decoration-none">{{ $album->artist->name }}</a></p>
-        <p class="opacity-75">12 tracks · 48 min · {{ $album->artist->genre->name }} · Released March 2025</p>
+        <p class="lead">by <a href="{{ route('artists.details', $artist) }}" class="text-ucc-gold fw-semibold text-decoration-none">{{ $album->artist->name }}</a></p>
+        <p class="opacity-75">12 tracks · 48 min · {{ $album->artist->genre->name }} · Released {{ $album->release_month }} {{ $album->release_year }}</p>
         <p>{{ $album->description }}</p>
-        <button class="btn btn-ucc btn-lg me-2"><i class="bi bi-play-fill"></i> Play Album</button>
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-ucc btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-play-fill"></i> Play Album
+                </button>
+                <ul class="dropdown-menu dropdown-menu-ucc">
+                    @foreach($album->albumLinks as $albumLink)
+                        <li>
+                            <a class="dropdown-item" href="{{ $albumLink->url }}">
+                                <i class="bi bi-music-note me-2"></i>{{ $albumLink->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         <button class="btn btn-outline-ucc btn-lg"><i class="bi bi-heart"></i> Save</button>
       </div>
     </div>
@@ -48,5 +60,4 @@
             </div>
   </div>
 </section>
-</main>
 @endsection

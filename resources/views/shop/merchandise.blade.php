@@ -2,7 +2,6 @@
 @section('title', 'Merchandise')
 
 @section('content')
-<body>
 <main style="padding-top:42px">
 
 <header class="page-header"><div class="container"><span class="badge bg-ucc-gold text-dark mb-3 px-3 py-2">Official Store</span><h1 class="serif">Merchandise &amp; Shop</h1><p class="lead opacity-75 mt-2">Wear it. Spin it. Display it. Take the message with you.</p></div></header>

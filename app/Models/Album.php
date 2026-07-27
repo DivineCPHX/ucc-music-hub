@@ -36,4 +36,9 @@ class Album extends Model
     {
         return $this->hasMany(Song::class);
     }
+
+    public function albumLinks()
+    {
+        return $this->hasMany(AlbumLink::class);
+    }
 }

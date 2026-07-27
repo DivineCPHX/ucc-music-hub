@@ -9,10 +9,12 @@ class AlbumLink extends Model
     protected $fillable = [
         'album_id',
         'name',
+        'icon',
+        'class_indicator',
         'url',
     ];
 
-    public function album()
+    public function albumLink()
     {
         return $this->belongsTo(Album::class);
     }

@@ -11,14 +11,13 @@ class AlbumController extends Controller
 {
     public function albums()
     {
-        return view('albums.index', [
-            'albums' => Album::all(),
-        ]);
+        $albums = Album::with(['artist', 'albumLinks', 'songs'])->get();
+        return view('albums.index', compact('albums'));
     }
     public function albumsDetails(Album $album)
     {
-        $album = Album::with('artist', 'songs',)->findOrfail($album->id);
         $artist = Artist::findOrFail($album->artist_id);
+        $album->load('albumLinks');
         return view('albums.details', compact('album', 'artist'));
     }
 }

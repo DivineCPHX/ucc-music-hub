@@ -29,15 +29,12 @@ class ArtistController extends Controller
         $genres = Genre::orderBy('name')->get();
 
         return view('artists.index', compact('artists', 'genres'));
-
-        // return view('artists.index', [
-        //     'artists' => Artist::all(),
-        // ]);
     }
 
     public function artistsDetails(Artist $artist)
     {
         // $artist->load('genre', 'artistLink', 'albums');
+        $artist->load('albums');
         $artist = Artist::with('genre', 'artistLinks', 'albums')->findOrFail($artist->id);
         return view('artists.details', compact('artist'));
     }
