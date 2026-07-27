@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique()->nullable();
             $table->string('song_photo')->nullable();
-            $table->unsignedInteger('release_date')->nullable();
+            $table->string('release_month')->nullable();
+            $table->unsignedInteger('release_year')->nullable();
             $table->unsignedInteger('song_bpm')->nullable();
             $table->string('song_key')->nullable();
             $table->text('description')->nullable();
             $table->longText('song_lyrics')->nullable();
             $table->unsignedInteger('song_duration')->nullable();
-            $table->json('social_links')->nullable();
             $table->timestamps();
         });
     }

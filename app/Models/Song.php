@@ -25,6 +25,21 @@ class Song extends Model
         'playlist_id',
     ];
 
+    public function getFormattedDurationAttribute(): string
+    {
+        $seconds = $this->song_duration;
+
+        $hours = floor($seconds / 3600);
+        $minutes = floor(($seconds % 3600) / 60);
+        $seconds = $seconds % 60;
+
+        if ($hours > 0) {
+            return sprintf('%d:%02d:%02d', $hours, $minutes, $seconds);
+        }
+
+        return sprintf('%d:%02d', $minutes, $seconds);
+    }
+
     public function album()
     {
         return $this->belongsTo(Album::class);
@@ -34,7 +49,7 @@ class Song extends Model
     {
         return $this->belongsTo(Artist::class);
     }
-    
+
     public function genre()
     {
         return $this->belongsTo(Genre::class);
