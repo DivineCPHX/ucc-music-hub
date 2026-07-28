@@ -2,27 +2,33 @@
 
 namespace App\Models;
 
+use App\Models\Album;
+use App\Models\Artist;
+use App\Models\Genre;
+use App\Models\Playlist;
+use App\Models\SongLinks;
 use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
     protected $fillable = [
-        'album_id',
-        'artist_id',
         'genre_id',
+        'artist_id',
+        'album_id',
+        'playlist_id',
         'title',
         'slug',
         'song_photo',
-        'release_date',
+        'release_month',
+        'release_year',
         'song_bpm',
         'song_key',
         'description',
         'song_lyrics',
         'song_duration',
         'social_links',
-        'created_at',
-        'updated_at',
-        'playlist_id',
+        'is_featured',
+        'timestamps',
     ];
 
     public function getFormattedDurationAttribute(): string
@@ -53,5 +59,15 @@ class Song extends Model
     public function genre()
     {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function playlist()
+    {
+        return $this->belongsToMany(Playlist::class);
+    }
+
+    public function songLinks()
+    {
+        return $this->hasMany(SongLinks::class);
     }
 }

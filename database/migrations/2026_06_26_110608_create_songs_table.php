@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->longText('song_lyrics')->nullable();
             $table->unsignedInteger('song_duration')->nullable();
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@ namespace App\Filament\Resources\Songs\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -14,22 +16,30 @@ class SongsTable
     {
         return $table
             ->columns([
-                TextColumn::make('album_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('artist_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('genre_id')
-                    ->numeric()
-                    ->sortable(),
+                // TextColumn::make('genre_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('artist_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('album_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('playlist_id')
+                //     ->numeric()
+                //     ->sortable(),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('song_photo')
-                    ->searchable(),
-                TextColumn::make('release_date')
+                ImageColumn::make('song_photo')
+                    ->visibility('public')
+                    ->disk('public')
+                    ->square(),
+                TextColumn::make('release_month')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('release_year')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('song_bpm')
@@ -37,7 +47,7 @@ class SongsTable
                     ->sortable(),
                 TextColumn::make('song_key')
                     ->searchable(),
-                TextColumn::make('song_duration')
+                TextColumn::make('formatted_duration')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -47,9 +57,9 @@ class SongsTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('playlist_id')
-                    ->numeric()
-                    ->sortable(),
+                IconColumn::make('is_featured')
+                    ->label('Is Featured')
+                    ->boolean(),
             ])
             ->filters([
                 //

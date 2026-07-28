@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Songs\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -47,6 +49,8 @@ class SongForm
                         Textarea::make('description')
                             ->default(null)
                             ->columnSpanFull(),
+                        Toggle::make('is_featured')
+                            ->label('Is Featured'),
                     ])->columns(2),
 
                 Section::make('Media Upload')
@@ -58,6 +62,7 @@ class SongForm
                             ->image()
                             ->default(null),
                     ])->columnSpanFull(),
+                    
                 Section::make('Meta B')
                     ->schema([
                         Select::make('release_month')
@@ -98,25 +103,57 @@ class SongForm
                             ])
                             ->default(null),
                         TextInput::make('song_duration')
-                            ->label('Duration')
-                            ->placeholder('3:45')
+                            ->label('Duration (HH:MM:SS)')
+                            ->placeholder('00:03:45')
                             ->required()
+                            ->rule('regex:/^([0-1]?\d|2[0-3]):[0-5]\d:[0-5]\d$/')
                             ->dehydrateStateUsing(function ($state) {
-                                [$minutes, $seconds] = array_map('intval', explode(':', $state));
+                                [$hours, $minutes, $seconds] = array_map('intval', explode(':', $state));
 
-                                return ($minutes * 60) + $seconds;
+                                return ($hours * 3600) + ($minutes * 60) + $seconds;
+                            })
+                            ->formatStateUsing(function ($state) {
+                                if ($state === null) {
+                                    return null;
+                                }
+
+                                return gmdate('H:i:s', $state);
                             })
                             ->default(null)
                             ->columnSpanFull(),
                     ])->columns(2),
 
                 RichEditor::make('song_lyrics')
+                    ->label('Song Lyrics')
                     ->default(null)
                     ->columnSpanFull(),
 
-                // Textarea::make('social_links')
-                //     ->label('Social Links')
-                //     ->default(null),
+                Section::make('')
+                    ->label('Song Links')
+                    ->description('Kindly select the links in this order: 1. YouTube, 2. Spotify, 3. Audiomack, 4. Boomplay')
+                    ->schema([
+                         Repeater::make('social_links')
+                            ->label('Social Links')
+                            ->relationship('songLinks')
+                            ->default(null)
+                            ->schema([
+                                Select::make('icons')
+                                    ->label('Select Icon')
+                                    ->options([
+                                        'bi bi-youtube text-danger me-2' => 'YouTube',
+                                        'bi bi-spotify text-success me-2' => 'Spotify',
+                                        'bi bi-music-note-list text-warning me-2' => 'Audiomack',
+                                    ])->required(),
+                                TextInput::make('name')
+                                    ->label('Platform')
+                                    ->required(),
+                                TextInput::make('url')
+                                    ->label('Link')
+                                    ->url()
+                                    ->required()
+                            ]),
+                    ]),
+
                 ])
             ])->columns(1);
     }
