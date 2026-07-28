@@ -225,3 +225,71 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,input:focus-visible{
 .dropdown-menu-ucc .dropdown-item:focus{
   background:rgba(201,169,106,.12);color:#f0d78c;
 }
+.cover-art {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0; /* fallback bg for the icon state */
+}
+.cover-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.song-links-dropdown {
+    display: inline-block;
+}
+.song-links-dropdown .dropdown-toggle::after {
+    display: none; /* hide default bootstrap caret, the bars are the toggle */
+}
+.song-links-hint {
+    font-size: 0.7rem;
+    color: #fff;
+    opacity: 0.6;
+    margin-top: 2px;
+}
+
+.visualizer-lg {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 20px;
+    width: 260px;
+}
+.visualizer-lg span {
+    display: block;
+    width: 4px;
+    background: var(--ucc-gold, #d4af37);
+    border-radius: 2px;
+    animation: bounce 1s ease-in-out infinite;
+}
+.visualizer-lg span:nth-child(1)  { height: 30%; animation-delay: 0s; }
+.visualizer-lg span:nth-child(2)  { height: 60%; animation-delay: 0.1s; }
+.visualizer-lg span:nth-child(3)  { height: 90%; animation-delay: 0.2s; }
+.visualizer-lg span:nth-child(4)  { height: 45%; animation-delay: 0.3s; }
+.visualizer-lg span:nth-child(5)  { height: 100%; animation-delay: 0.05s; }
+.visualizer-lg span:nth-child(6)  { height: 55%; animation-delay: 0.35s; }
+.visualizer-lg span:nth-child(7)  { height: 75%; animation-delay: 0.15s; }
+.visualizer-lg span:nth-child(8)  { height: 40%; animation-delay: 0.25s; }
+.visualizer-lg span:nth-child(9)  { height: 85%; animation-delay: 0.4s; }
+.visualizer-lg span:nth-child(10) { height: 50%; animation-delay: 0.1s; }
+.visualizer-lg span:nth-child(11) { height: 65%; animation-delay: 0.2s; }
+.visualizer-lg span:nth-child(12) { height: 35%; animation-delay: 0.3s; }
+
+@keyframes bounce {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+}
+.lyrics-block {
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #0a0a0a;
+    white-space: pre-line;
+    max-width: 600px;
+}

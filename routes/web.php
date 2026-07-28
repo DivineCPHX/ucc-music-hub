@@ -28,10 +28,10 @@ Route::get('/albums', [AlbumController::class, 'albums'])->name('albums.index');
 Route::get('/albums{album}', [AlbumController::class, 'albumsDetails'])->name('albums.details');
 // Songs
 Route::get('/songs', [SongController::class, 'songs'])->name('songs.index');
-Route::get('/songs/details', [SongController::class, 'songsDetails'])->name('songs.details');
+Route::get('/songs/{song}', [SongController::class, 'songsDetails'])->name('songs.details');
 // Playlists
 Route::get('/playlists', [PlaylistController::class, 'playlists'])->name('playlists.index');
-Route::get('/playlists/details', [PlaylistController::class, 'playlistsDetails'])->name('playlists.details');
+Route::get('/playlists/{playlist}', [PlaylistController::class, 'playlistsDetails'])->name('playlists.details');
 // Events
 Route::get('/events', [EventController::class, 'events'])->name('events.index');
 // Shop
@@ -41,7 +41,7 @@ Route::get('/shop/music-sheets', [ShopController::class, 'shopMusicSheets'])->na
 Route::get('/gallery', [GalleryController::class, 'gallery'])->name('gallery.index');
 // Blog
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog.index');
-Route::get('/blog/single', [BlogController::class, 'blogSingle'])->name('blog.single');
+Route::get('/blog/{blog}', [BlogController::class, 'blogSingle'])->name('blog.single');
 // More
 Route::get('/about', [MoreController::class, 'moreAbout'])->name('more.about');
 Route::get('/contact', [MoreController::class, 'moreContact'])->name('more.contact');

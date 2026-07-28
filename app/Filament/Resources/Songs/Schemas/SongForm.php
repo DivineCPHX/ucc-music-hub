@@ -62,7 +62,7 @@ class SongForm
                             ->image()
                             ->default(null),
                     ])->columnSpanFull(),
-                    
+
                 Section::make('Meta B')
                     ->schema([
                         Select::make('release_month')
@@ -137,7 +137,7 @@ class SongForm
                             ->relationship('songLinks')
                             ->default(null)
                             ->schema([
-                                Select::make('icons')
+                                Select::make('icon')
                                     ->label('Select Icon')
                                     ->options([
                                         'bi bi-youtube text-danger me-2' => 'YouTube',

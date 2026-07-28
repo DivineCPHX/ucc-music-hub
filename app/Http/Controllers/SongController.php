@@ -15,7 +15,14 @@ class SongController extends Controller
     }
     public function songsDetails(Song $song)
     {
-        $song->load('genre', 'artist', 'album');
-        return view('songs.details', compact('genre', 'artist', 'album', 'song'));
+        $song = Song::with(['genre', 'artist', 'album'])->findOrFail($song->id);
+        $song->load('songLinks');
+
+        $relatedSongs = Song::where('artist_id', '=', $song->artist_id, 'and')
+        ->where('id', '!=', $song->id, 'and')
+        ->limit(4)
+        ->get();
+
+        return view('songs.details', compact('song', 'relatedSongs'));
     }
 }

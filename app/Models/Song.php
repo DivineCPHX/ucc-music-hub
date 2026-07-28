@@ -46,6 +46,19 @@ class Song extends Model
         return sprintf('%d:%02d', $minutes, $seconds);
     }
 
+    public function getPlainLyricsAttribute(): string
+    {
+        if (! $this->song_lyrics) {
+            return '';
+        }
+
+        $text = str_replace(['</p>', '<br>', '<br/>', '<br />'], "\n", $this->song_lyrics);
+        $text = strip_tags($text);
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5);
+
+        return trim($text);
+    }
+
     public function album()
     {
         return $this->belongsTo(Album::class);
