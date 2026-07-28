@@ -31,4 +31,11 @@ class Playlist extends Model
     {
         return $this->belongsTo(Album::class);
     }
+
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class)
+            ->withPivot('order')
+            ->orderBy('playlist_song.order');
+    }
 }

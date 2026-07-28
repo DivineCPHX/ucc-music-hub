@@ -74,9 +74,10 @@ class Song extends Model
         return $this->belongsTo(Genre::class);
     }
 
-    public function playlist()
+    public function playlists()
     {
-        return $this->belongsToMany(Playlist::class);
+        return $this->belongsToMany(Playlist::class)
+            ->withPivot('order');
     }
 
     public function songLinks()

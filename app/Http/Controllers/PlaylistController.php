@@ -10,11 +10,23 @@ class PlaylistController extends Controller
 {
     public function playlists()
     {
-        $playlists = Playlist::with(['artist', 'album'])->get();
+        $playlists = Playlist::with(['artist', 'album', 'songs'])
+            ->withCount('songs')
+            ->latest()
+            ->get();
+
         return view('playlists.index', compact('playlists'));
     }
-    public function playlistsDetails()
+
+    public function playlistsDetails(Playlist $playlist)
     {
-        return view('playlists.details');
+        $playlist = Playlist::with([
+            'artist',
+            'album',
+            'songs.artist',
+            'songs.genre',
+        ])->findOrFail($playlist->id);
+
+        return view('playlists.details', compact('playlist'));
     }
 }
