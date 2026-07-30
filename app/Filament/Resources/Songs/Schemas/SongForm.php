@@ -25,19 +25,25 @@ class SongForm
                                 Select::make('genre_id')
                                     ->label('Genre Name')
                                     ->relationship('genre', 'name')
+                                    ->searchable()
                                     ->required(),
                                 Select::make('artist_id')
                                     ->label('Artist Name')
                                     ->relationship('artist', 'name')
+                                    ->searchable()
                                     ->required(),
                                 Select::make('album_id')
                                     ->label('Album Name')
                                     ->relationship('album', 'name')
+                                    ->searchable()
                                     ->required(),
-                                // TextInput::make('playlist_id')
-                                //     ->label('Playlist Name')
-                                //     ->required()
-                                //     ->numeric(),
+                                Select::make('playlist_id')
+                                    ->label('Playlist Name')
+                                    ->relationship('playlists', 'title')
+                                    ->multiple()
+                                    ->preload()
+                                    ->searchable()
+                                    ->required(),
                             ])->columns(2),
 
                 Section::make('Meta A')
@@ -144,13 +150,13 @@ class SongForm
                                         'bi bi-spotify text-success me-2' => 'Spotify',
                                         'bi bi-music-note-list text-warning me-2' => 'Audiomack',
                                     ])->required(),
-                                TextInput::make('name')
-                                    ->label('Platform')
-                                    ->required(),
                                 TextInput::make('url')
                                     ->label('Link')
                                     ->url()
-                                    ->required()
+                                    ->required(),
+                                TextInput::make('name')
+                                    ->label('Platform')
+                                    ->required(),
                             ]),
                     ]),
 

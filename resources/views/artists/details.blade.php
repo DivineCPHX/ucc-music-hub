@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Artist Details')
+@section('title', $artist->name)
 
 @section('content')
 <body>
@@ -28,12 +28,19 @@
 
         <h3 class="serif mt-5">Popular Songs</h3>
         <div class="list-group">
-        <div class="list-group-item d-flex align-items-center"><span class="text-muted me-3">1</span>
-            <div class="flex-grow-1"><div class="fw-semibold">Amazing Grace (Reimagined)</div><small class="text-muted">Worship</small></div><small class="text-muted me-3">4:21</small><button class="btn btn-sm btn-ucc rounded-circle"><i class="bi bi-play-fill"></i></button></div><div class="list-group-item d-flex align-items-center"><span class="text-muted me-3">2</span>
-            <div class="flex-grow-1"><div class="fw-semibold">How Great Thou Art</div><small class="text-muted">Hymns</small></div><small class="text-muted me-3">5:02</small><button class="btn btn-sm btn-ucc rounded-circle"><i class="bi bi-play-fill"></i></button></div><div class="list-group-item d-flex align-items-center"><span class="text-muted me-3">3</span>
-            <div class="flex-grow-1"><div class="fw-semibold">Holy Spirit Move</div><small class="text-muted">Contemporary</small></div><small class="text-muted me-3">3:48</small><button class="btn btn-sm btn-ucc rounded-circle"><i class="bi bi-play-fill"></i></button></div><div class="list-group-item d-flex align-items-center"><span class="text-muted me-3">4</span>
-            <div class="flex-grow-1"><div class="fw-semibold">Old Rugged Cross</div><small class="text-muted">Southern Gospel</small></div><small class="text-muted me-3">4:15</small><button class="btn btn-sm btn-ucc rounded-circle"><i class="bi bi-play-fill"></i></button></div><div class="list-group-item d-flex align-items-center"><span class="text-muted me-3">5</span>
-            <div class="flex-grow-1"><div class="fw-semibold">Sanctuary</div><small class="text-muted">Choral</small></div><small class="text-muted me-3">6:10</small><button class="btn btn-sm btn-ucc rounded-circle"><i class="bi bi-play-fill"></i></button></div>
+            @foreach($artist->songs as $index => $song)
+            <div class="list-group-item d-flex align-items-center">
+                <span class="text-muted me-3">{{ $index + 1 }}</span>
+                <div class="flex-grow-1">
+                    <div class="fw-semibold">{{ $song->title }}</div>
+                    <small class="text-muted">{{ $song->genre->name }}</small>
+                </div>
+                <small class="text-muted me-3">{{ $song->formatted_duration }}</small>
+                <a href="{{ route('songs.details', $song) }}" class="btn btn-sm btn-ucc rounded-circle">
+                    <i class="bi bi-play-fill"></i>
+                </a>
+            </div>
+            @endforeach
         </div>
 
         <h3 class="serif mt-5">Albums</h3>
@@ -42,7 +49,7 @@
     <div class="col-sm-6 col-md-4 col-lg-3">
     <div class="card card-music h-100">
         <div class="cover">
-            <img src="{{ Storage::url($album->photo) }}" alt="Songs of the Sanctuary"><span class="play"><i class="bi bi-play-fill"></i></span>
+            <img src="{{ Storage::url($album->photo) }}" alt="Songs of the Sanctuary">
         </div>
         <div class="card-body">
             <a href="{{ route('albums.details', $album->id) }} target="_blank" class="text-decoration-none text-reset">

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('playlist_photo')->nullable();
             $table->string('playlist_creator')->nullable();
-            $table->string('playlist_duration')->nullable();
+            $table->unsignedInteger('playlist_duration')->nullable();
             $table->string('playlist_followers')->nullable();
             $table->timestamps();
         });

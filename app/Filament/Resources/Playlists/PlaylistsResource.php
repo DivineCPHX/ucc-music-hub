@@ -9,7 +9,7 @@ use App\Filament\Resources\Playlists\Pages\ViewPlaylists;
 use App\Filament\Resources\Playlists\Schemas\PlaylistsForm;
 use App\Filament\Resources\Playlists\Schemas\PlaylistsInfolist;
 use App\Filament\Resources\Playlists\Tables\PlaylistsTable;
-use App\Models\Playlists;
+use App\Models\Playlist;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -18,9 +18,9 @@ use Filament\Tables\Table;
 
 class PlaylistsResource extends Resource
 {
-    protected static ?string $model = Playlists::class;
+    protected static ?string $model = Playlist::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedForward;
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -42,7 +42,7 @@ class PlaylistsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\SongsRelationManager::class,
         ];
     }
 
