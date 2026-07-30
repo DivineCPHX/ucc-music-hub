@@ -27,6 +27,9 @@ class PlaylistController extends Controller
             'songs.genre',
         ])->findOrFail($playlist->id);
 
+        $playlist->load('playlistLinks');
+
         return view('playlists.details', compact('playlist'));
     }
+
 }

@@ -2,10 +2,19 @@
 @section('title', 'Events & Booking')
 
 @section('content')
-<body>
 <main style="padding-top:42px">
 
-<header class="page-header"><div class="container"><div class="row align-items-center"><div class="col-lg-8"><span class="badge bg-ucc-gold text-dark mb-3 px-3 py-2">Live & In Person</span><h1 class="serif">Events &amp; Booking</h1><p class="lead opacity-75 mt-2">Join us in worship at upcoming concerts, festivals, and tour stops — or book our artists for your event.</p></div></div></div></header>
+<header class="page-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-ucc-gold text-dark mb-3 px-3 py-2">Live & In Person</span>
+                <h1 class="serif">Events &amp; Booking</h1>
+                <p class="lead opacity-75 mt-2">Join us in worship at upcoming concerts, festivals, and tour stops — or book our artists for your event.</p>
+            </div>
+        </div>
+    </div>
+</header>
 
 <section class="section bg-ucc-cream">
   <div class="container">

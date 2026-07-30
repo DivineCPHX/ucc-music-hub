@@ -35,7 +35,7 @@ class ArtistController extends Controller
     {
         // $artist->load('genre', 'artistLink', 'albums');
         $artist->load('albums');
-        $artist = Artist::with('genre', 'artistLinks', 'albums')->findOrFail($artist->id);
+        $artist = Artist::with('genre', 'artistLinks', 'albums', 'songs.genre')->findOrFail($artist->id);
         return view('artists.details', compact('artist'));
     }
 }

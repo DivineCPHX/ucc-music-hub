@@ -20,7 +20,7 @@ class PlaylistsResource extends Resource
 {
     protected static ?string $model = Playlist::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedForward;
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -42,7 +42,7 @@ class PlaylistsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\SongsRelationManager::class,
         ];
     }
 
