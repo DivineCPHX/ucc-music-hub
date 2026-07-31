@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\AlbumLinks\Pages;
+namespace App\Filament\Resources\EventTypes\Pages;
 
-use App\Filament\Resources\AlbumLinks\AlbumLinkResource;
+use App\Filament\Resources\EventTypes\EventTypeResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditAlbumLink extends EditRecord
+class EditEventType extends EditRecord
 {
-    protected static string $resource = AlbumLinkResource::class;
+    protected static string $resource = EventTypeResource::class;
 
     protected function getHeaderActions(): array
     {

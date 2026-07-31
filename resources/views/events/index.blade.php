@@ -18,21 +18,33 @@
 
 <section class="section bg-ucc-cream">
   <div class="container">
-    <div class="section-title text-center"><div class="sub">Upcoming</div><h2>Tour Dates 2026</h2></div>
+    <div class="section-title text-center"><div class="sub">{{ $eventPage->page_sm_tag }}</div><h2>{{ $eventPage->page_hd_tag }} {{ $eventPage->current_year }}</h2></div>
     <div class="row g-4">
+        @foreach($events as $event)
+      <div class="col-lg-6">
+        <div class="event-card d-flex gap-3 h-100">
+            <div class="event-date">
+                <div class="d">{{ str_pad($event->day, 2, '0', STR_PAD_LEFT) }}</div>
+                <small class="text-uppercase">{{ \Carbon\Carbon::create()->month($event->month)->format('M') }}</small>
+            </div>
+            <div class="flex-grow-1">
+            <span class="tag mb-2">{{ $event->eventType->name }}</span>
+            <h5 class="serif mt-2 mb-1">{{ $event->name }}</h5>
+            <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill text-ucc-primary me-1"></i>{{ $event->venue }}, {{ $event->location }}</p>
+            <p class="text-muted small mb-3">
+                <i class="bi bi-clock me-1"></i>{{ \Carbon\Carbon::parse($event->time)->format('g:i A') }} ·
+                @if($event->ticketTypes->isNotEmpty())
+                    · <i class="bi bi-ticket-perforated ms-2 me-1"></i>From ${{ number_format($event->ticketTypes->min('price'), 0) }}
+                @endif
+            </p>
+            <button class="btn btn-ucc btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal" data-event-id="{{ $event->id }}><i class="bi bi-ticket-detailed me-1"></i>Get Tickets</button>
+            <a href="#" class="btn btn-outline-ucc btn-sm">Details</a>
+            </div>
+        </div>
+      </div>
+      @endforeach
 
-      <div class="col-lg-6"><div class="event-card d-flex gap-3 h-100">
-        <div class="event-date"><div class="d">18</div><small class="text-uppercase">Jun</small></div>
-        <div class="flex-grow-1">
-          <span class="tag mb-2">Worship Night</span>
-          <h5 class="serif mt-2 mb-1">Songs of the Sanctuary Live</h5>
-          <p class="text-muted small mb-2"><i class="bi bi-geo-alt-fill text-ucc-primary me-1"></i>Grace Cathedral, Nashville TN</p>
-          <p class="text-muted small mb-3"><i class="bi bi-clock me-1"></i>7:30 PM · <i class="bi bi-ticket-perforated ms-2 me-1"></i>From $25</p>
-          <button class="btn btn-ucc btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-ticket-detailed me-1"></i>Get Tickets</button>
-          <a href="#" class="btn btn-outline-ucc btn-sm">Details</a>
-        </div></div></div>
-
-      <div class="col-lg-6"><div class="event-card d-flex gap-3 h-100">
+      {{-- <div class="col-lg-6"><div class="event-card d-flex gap-3 h-100">
         <div class="event-date"><div class="d">02</div><small class="text-uppercase">Jul</small></div>
         <div class="flex-grow-1">
           <span class="tag mb-2">Festival</span>
@@ -85,7 +97,7 @@
           <p class="text-muted small mb-3"><i class="bi bi-clock me-1"></i>All Day · <i class="bi bi-ticket-perforated ms-2 me-1"></i>From $99</p>
           <button class="btn btn-ucc btn-sm" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-ticket-detailed me-1"></i>Get Tickets</button>
           <a href="#" class="btn btn-outline-ucc btn-sm">Details</a>
-        </div></div></div>
+        </div></div></div> --}}
 
     </div>
   </div>

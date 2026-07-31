@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('ticket_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('session')->nullable();
-            $table->string('session_detail')->nullable();
+            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->string('name'); // General Admission, VIP, Premium
+            $table->decimal('price', 8, 2);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('ticket_types');
     }
 };
